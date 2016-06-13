@@ -20,17 +20,17 @@ namespace projekt2
 
         private void Wstecz_Click(object sender, EventArgs e)
         {
-
+            okienko_na_strone.GoBack();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Dalej_Click(object sender, EventArgs e)
         {
-
+            okienko_na_strone.GoForward();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void Odśwież_Click(object sender, EventArgs e)
         {
-
+            okienko_na_strone.Refresh();
         }
 
         private void button4_Click(object sender, EventArgs e)

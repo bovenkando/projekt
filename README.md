@@ -17,10 +17,13 @@ namespace projekt2
         {
             InitializeComponent();
         }
+        
+        WebBrowser browser = new WebBrowser();
+            int i = 0;
 
         private void Wstecz_Click(object sender, EventArgs e)
         {
-            okienko_na_strone.GoBack();
+            ((WebBrowser)tabControl1.SelectedTab.Controls[0]).Refresh();
         }
 
         private void Dalej_Click(object sender, EventArgs e)
@@ -50,6 +53,21 @@ namespace projekt2
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
+
+        }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            browser = new WebBrowser();
+            browser.ScriptErrorsSuppressed = true;
+            browser.Dock = DockStyle.Fill;
+            browser.Visible = true;
+            browser.DocumentCompleted += browser_DocumentCompleted;
+            browser.Navigate("http://www.google.com");
+            tabControl1.Anchor = AnchorStyles.Top & AnchorStyles.Bottom & AnchorStyles.Right & AnchorStyles.Left;
+            tabControl1.TabPages.Add("New tab");
+            tabControl1.SelectTab(i);
+            tabControl1.SelectedTab.Controls.Add(browser);
+            i += 1;
 
         }
 

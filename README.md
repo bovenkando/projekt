@@ -73,7 +73,26 @@ namespace projekt2
 
         private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
-
+            tabControl1.SelectedTab.Text = ((WebBrowser)tabControl1.SelectedTab.Controls[0]).DocumentTitle;
+            textBox1.Text = browser.Url.AbsoluteUri;
+        }
+        private void Navigate(String address)
+        {
+            if (String.IsNullOrEmpty(address)) return;
+            if (address.Equals("about:blank")) return;
+            if (!address.StartsWith("http://") &&
+                !address.StartsWith("https://"))
+            {
+                address = "http://" + address;
+            }
+            try
+            {
+                browser.Navigate(new Uri(address));
+            }
+            catch (System.UriFormatException)
+            {
+                return;
+            }
         }
     }
 }

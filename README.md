@@ -28,7 +28,12 @@ namespace projekt2
 
         private void Dalej_Click(object sender, EventArgs e)
         {
-            okienko_na_strone.GoForward();
+            ((WebBrowser)tabControl1.SelectedTab.Controls[0]).GoForward();
+            
+             using (System.IO.StreamWriter file = new System.IO.StreamWriter("historia.txt", true))
+            {
+                file.WriteLine(textBox1.Text);
+            }
         }
 
         private void Odśwież_Click(object sender, EventArgs e)
@@ -36,9 +41,9 @@ namespace projekt2
             okienko_na_strone.Refresh();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void strona_startowa_Click(object sender, EventArgs e)
         {
-
+             ((WebBrowser)tabControl1.SelectedTab.Controls[0]).Navigate("http://www.google.com");
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -94,5 +99,6 @@ namespace projekt2
                 return;
             }
         }
+        
     }
 }

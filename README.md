@@ -46,14 +46,19 @@ namespace projekt2
              ((WebBrowser)tabControl1.SelectedTab.Controls[0]).Navigate("http://www.google.com");
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void Przejdź_Click(object sender, EventArgs e)
         {
-
+            ((WebBrowser)tabControl1.SelectedTab.Controls[0]).Navigate(textBox1.Text);
+            
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter("historia.txt", true))
+            {
+                file.WriteLine(textBox1.Text);
+            }
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void Zatrzymaj_Click(object sender, EventArgs e)
         {
-
+            ((WebBrowser)tabControl1.SelectedTab.Controls[0]).Stop();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -99,6 +104,7 @@ namespace projekt2
                 return;
             }
         }
+        
         
     }
 }
